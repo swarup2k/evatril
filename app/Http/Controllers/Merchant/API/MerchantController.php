@@ -12,7 +12,7 @@ class MerchantController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware("auth:venue-api")->except(['addVenue']);
+        return $this->middleware("auth:venue-api")->except(['addVenue','accountUpdate']);
     }
 
     public function addVenue(Request $request)
