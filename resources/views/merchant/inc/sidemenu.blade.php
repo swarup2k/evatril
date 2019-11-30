@@ -12,7 +12,10 @@
 			<div class="widget-profile-menu py-3">
 				<ul class="categories categories--style-3">
 					<li>
-						<a href="{{ route('merchant.home') }}" class="active">
+
+					</li>
+					<li>
+						<a href="{{ route('merchant.home') }}" class="{{ (\Route::currentRouteName() == 'merchant.home') ? 'active' : '' }}">
 							<i class="la la-dashboard"></i>
 							<span class="category-name">
                                             Dashboard
@@ -20,7 +23,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#http://littardoemporium.com/shop/purchase_history" class="">
+						<a href="#" class="">
 							<i class="la la-file-text"></i>
 							<span class="category-name">
                                             Booking History
@@ -28,7 +31,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#http://littardoemporium.com/shop/wishlists" class="">
+						<a href="{{ route('merchant.venues') }}" class="{{ (\Route::currentRouteName() == 'merchant.venues') ? 'active' : '' }}">
 							<i class="la la-heart-o"></i>
 							<span class="category-name">
                                             Venues
@@ -36,7 +39,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#http://littardoemporium.com/shop/seller/products" class="">
+						<a href="#" class="">
 							<i class="la la-diamond"></i>
 							<span class="category-name">
                                             Venue Reviews
@@ -44,7 +47,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#http://littardoemporium.com/shop/orders" class="">
+						<a href="#" class="">
 							<i class="la la-file-text"></i>
 							<span class="category-name">
                                             Venue Setting
@@ -53,7 +56,7 @@
 					</li>
 
 					<li>
-						<a href="#http://littardoemporium.com/shop/seller/payments" class="">
+						<a href="#" class="">
 							<i class="la la-cc-mastercard"></i>
 							<span class="category-name">
                                             Payment History
@@ -62,7 +65,7 @@
 					</li>
 
 					<li>
-						<a href="#http://littardoemporium.com/shop/support_ticket" class="">
+						<a href="#" class="">
 							<i class="la la-support"></i>
 							<span class="category-name">
                                             Support Ticket

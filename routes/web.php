@@ -48,7 +48,10 @@ Route::prefix('admin')->group(function (){
 
 Route::prefix('merchant')->group(function (){
 
+
     Route::get('/', 'Merchant\HomeController@index')->name('merchant.home');
+    Route::get('/venues', 'Merchant\HomeController@myVenues')->name('merchant.venues');
+    Route::get('/venue/{id}/delete', 'Merchant\HomeController@deleteVenue')->name('merchant.venue.delete');
     Route::get('/login', 'Merchant\Auth\LoginController@showLoginForm')->name('merchant.login');
     Route::post('/login', 'Merchant\Auth\LoginController@login')->name('merchant.login.validate');
     Route::get('/logout','Merchant\Auth\LoginController@logout')->name('merchant.logout');
