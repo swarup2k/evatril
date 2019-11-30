@@ -17,7 +17,7 @@ class LoginController extends Controller
         if($merchant){
            if($merchant->verified == 1){
                if($merchant->name == '' || $merchant->email == '' || $merchant->password == ''){
-                   return response()->json(['message' => 'Redirecting to registration page','error' => 0]);
+                   return response()->json(['message' => 'Redirecting to registration page','merchant_id' => $merchant->id ,'error' => 0]);
                }
            }else{
                $otp = rand(100000,999999);

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4def717-c8a4-44bd-a956-ba462b608033" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Merchant/API/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Merchant/API/LoginController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +15,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="307">
               <caret line="88" column="48" selection-start-line="88" selection-start-column="48" selection-end-line="88" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Merchant/API/LoginController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="19" column="104" selection-start-line="19" selection-start-column="104" selection-end-line="19" selection-end-column="104" />
+              <folding>
+                <element signature="e#53#66#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,6 +60,7 @@
       <find>user</find>
       <find>Total Catering Service</find>
       <find>ategory wise product sale</find>
+      <find>caln</find>
     </findStrings>
     <replaceStrings>
       <replace>0</replace>
@@ -81,7 +93,6 @@
         <option value="$PROJECT_DIR$/resources/views/admin/my-venue.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/merchant/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Merchant/API/LoginController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/VenueController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/venue/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/inc/admin_nav.blade.php" />
@@ -109,6 +120,7 @@
         <option value="$PROJECT_DIR$/resources/views/admin/merchant/list.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Merchant/API/LoginController.php" />
       </list>
     </option>
   </component>
@@ -264,14 +276,6 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="evatrilx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="evatrilx" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="Merchant" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -382,12 +386,12 @@
       <workItem from="1574834369175" duration="4347000" />
       <workItem from="1574920662828" duration="11287000" />
       <workItem from="1575019843266" duration="4918000" />
-      <workItem from="1575029255078" duration="15567000" />
+      <workItem from="1575029255078" duration="15754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36119000" />
+    <option name="totallyTimeSpent" value="36306000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -408,7 +412,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.25429976" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.25429976" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -693,16 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Merchant/API/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="33" column="75" selection-start-line="33" selection-start-column="75" selection-end-line="33" selection-end-column="75" />
-          <folding>
-            <element signature="e#53#66#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/storage/framework/views/d6b5b37106c12ccb10890b4e4435f84b40d419c9.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -789,6 +783,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
           <caret line="88" column="48" selection-start-line="88" selection-start-column="48" selection-end-line="88" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Merchant/API/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="19" column="104" selection-start-line="19" selection-start-column="104" selection-end-line="19" selection-end-column="104" />
+          <folding>
+            <element signature="e#53#66#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
