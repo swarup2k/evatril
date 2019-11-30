@@ -13,5 +13,6 @@ Route::prefix('merchant')->group(function () {
 
     //Venue related route
     Route::post('venue/add', 'Merchant\API\MerchantController@addVenue');
+    Route::post('hall/add', 'Merchant\API\MerchantController@addHall');
 
 });

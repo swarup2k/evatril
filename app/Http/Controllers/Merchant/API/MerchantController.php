@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Merchant\API;
 
+use App\Hall;
 use App\Http\Controllers\Controller;
 use App\Merchant;
 use App\Venue;
@@ -42,6 +43,20 @@ class MerchantController extends Controller
 
         return response()->json(['message' => 'Venue details has been saved', 'venue_id' => $venue->id ,'error' => 0]);
 
+    }
+
+    public function addHall(Request $request)
+    {
+        $hall = new Hall();
+        $hall->name = $request->name;
+        $hall->venue_id = $request->venue_id;
+        $hall->type = $request->type;
+        $hall->area_size = $request->area_size;
+        $hall->capacity_floating = $request->capacity_floating;
+        $hall->booking_amount = $request->booking_amount;
+        $hall->save();
+
+        return response()->json(['message' => 'Property has been added', 'error' => 0]);
     }
 
     public function accountUpdate(Request $request)
