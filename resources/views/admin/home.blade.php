@@ -29,36 +29,36 @@
 					<div class="col-sm-6">
 						<div class="panel">
 							<div class="pad-top text-center dash-widget">
-								<p class="text-normal text-main">Total Catering Service</p>
+								<p class="text-normal text-main">Total Catering Bookings</p>
 								<p class="text-semibold text-3x text-main">0</p>
-								<a href="#" class="btn btn-primary mar-top btn-block top-border-radius-no">Manage
-									Category</a>
+								<a href="#" class="btn btn-primary mar-top btn-block top-border-radius-no">Manage Catering
+									</a>
 							</div>
 						</div>
 						<div class="panel">
 							<div class="pad-top text-center dash-widget">
-								<p class="text-normal text-main">Total DJ/Music category</p>
+								<p class="text-normal text-main">Total DJ/Music Bookings</p>
 								<p class="text-semibold text-3x text-main">0</p>
-								<a href="#" class="btn btn-primary mar-top btn-block top-border-radius-no">Manage Category</a>
+								<a href="#" class="btn btn-primary mar-top btn-block top-border-radius-no">Manage DJ/Music</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="panel">
 							<div class="pad-top text-center dash-widget">
-								<p class="text-normal text-main">Total Decoration Service</p>
+								<p class="text-normal text-main">Total Decoration Booking</p>
 								<p class="text-semibold text-3x text-main">0</p>
 								<a href="#"
 								   class="btn btn-primary mar-top btn-block top-border-radius-no">Manage
-									Category</a>
+									Decoration</a>
 							</div>
 						</div>
 						<div class="panel">
 							<div class="pad-top text-center dash-widget">
-								<p class="text-normal text-main">Total Photo/Videography Service</p>
+								<p class="text-normal text-main">Total Photo/Videography Bookings</p>
 								<p class="text-semibold text-3x text-main">0</p>
 								<a href="#"
-								   class="btn btn-primary mar-top btn-block top-border-radius-no">Manage Category</a>
+								   class="btn btn-primary mar-top btn-block top-border-radius-no">Manage Photo/Videography</a>
 							</div>
 						</div>
 					</div>

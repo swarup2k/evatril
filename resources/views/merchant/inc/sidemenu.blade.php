@@ -4,7 +4,19 @@
 			<div class="widget-profile-box text-center p-3">
 				<div class="image"
 					 style="background-image:url('https://img.pngio.com/merchant-royalty-free-stock-png-images-for-your-design-merchant-png-512_512.png')"></div>
-				<div class="name mb-0">{{ auth('merchant')->user()->name }} </div>
+				<div class="name mb-0">{{ auth('merchant')->user()->name }}
+
+					@if (auth('merchant')->user()->approved == 1)
+						<img width="40px" src="http://littardoemporium.com/shop/public/frontend/images/icons/verified.png"
+							 alt="" width="130">
+
+					@else
+						<img width="40px" src="http://littardoemporium.com/shop/public/frontend/images/icons/non_verified.png"
+							 alt="" width="130">
+
+
+					@endif
+				</div>
 			</div>
 			<div class="sidebar-widget-title py-3">
 				<span>Menu</span>

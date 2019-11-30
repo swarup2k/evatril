@@ -15,7 +15,7 @@ class MerchantController extends Controller
 
     public function list()
     {
-        $merchants = Merchant::all();
+        $merchants = Merchant::with('venue')->get();
         return view('admin.merchant.list',['merchants' => $merchants]);
     }
 

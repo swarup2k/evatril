@@ -101,13 +101,13 @@
 							<!--Submenu-->
 							<ul class="collapse" aria-expanded="false" style="">
 								<li class="">
-									<a class="nav-link" href="{{ route('admin.venue.my') }}">My Venue List </a>
+									<a class="nav-link" href="{{ route('admin.venue.my') }}">In-house Venue List </a>
 								</li>
 								<li class="">
-									<a class="nav-link" href="{{ route('admin.venue.add') }}">Add Venue</a>
+									<a class="nav-link" href="{{ route('admin.venue.add') }}">Add In-house Venue</a>
 								</li>
 								<li class="">
-									<a class="nav-link" href="{{ route('admin.venue.merchant') }}">Merchant Venues</a>
+									<a class="nav-link" href="{{ route('admin.venue.merchant') }}">Merchant Venue List</a>
 								</li>
 
 							</ul>

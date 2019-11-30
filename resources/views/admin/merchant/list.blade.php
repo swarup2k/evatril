@@ -54,11 +54,24 @@
 										{{__('Actions')}} <i class="dropdown-caret"></i>
 									</button>
 									<ul class="dropdown-menu dropdown-menu-right point">
+										@if (isset($v->venue['id']))
+											<li>
+												<a href="{{route('admin.venue.view', $v->venue['id'])}}">{{__('View Details')}}</a>
+											</li>
+										@else
+											<li>
+												<span class="label label-danger">No Venues added</span>
+											</li>
+										@endif
 
 										@if ($v->approved == 1)
-											<li><a href="{{ route('admin.merchant.deactivate', $v->id) }}">{{__('Deactivate')}}</a></li>
+											<li>
+												<a href="{{ route('admin.merchant.deactivate', $v->id) }}">{{__('Deactivate')}}</a>
+											</li>
 										@else
-											<li><a href="{{ route('admin.merchant.activate', $v->id) }}">{{__('Activate')}}</a></li>
+											<li>
+												<a href="{{ route('admin.merchant.activate', $v->id) }}">{{__('Activate')}}</a>
+											</li>
 										@endif
 
 										<li>

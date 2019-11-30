@@ -16,4 +16,9 @@ class Merchant extends Authenticatable
         'password', 'remember_token', 'otp'
     ];
     use HasApiTokens, Notifiable;
+
+    public function venue()
+    {
+        return $this->hasOne(Venue::class);
+    }
 }
