@@ -53,6 +53,7 @@ class MerchantController extends Controller
         $hall->type = $request->type;
         $hall->area_size = $request->area_size;
         $hall->capacity_floating = $request->capacity_floating;
+        $hall->capacity_row = $request->capacity_row;
         $hall->booking_amount = $request->booking_amount;
         $hall->save();
 
