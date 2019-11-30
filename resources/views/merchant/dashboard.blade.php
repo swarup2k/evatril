@@ -105,8 +105,7 @@
 										@else
 											<img src="http://littardoemporium.com/shop/public/frontend/images/icons/non_verified.png"
 												 alt="" width="130">
-											<a href="http://littardoemporium.com/shop/seller/shop/apply_for_verification"
-											   class="btn btn-styled btn-base-1">Verify Now</a>
+
 
 										@endif
 									</div>
@@ -124,7 +123,7 @@
 										<ul class="clearfix">
 										</ul>
 										<div class="text-center">
-											<a href="http://littardoemporium.com/shop/seller/product/upload"
+											<a href="#"
 											   class="btn pt-3 pb-1">Add New Product</a>
 										</div>
 									</div>
@@ -134,13 +133,13 @@
 								<div class="bg-white mt-4 p-4 text-center">
 									<div class="heading-4 strong-700">Shop</div>
 									<p>Manage &amp; organize your shop</p>
-									<a href="http://littardoemporium.com/shop/shops"
+									<a href="#"
 									   class="btn btn-styled btn-base-1 btn-outline btn-sm">Go to setting</a>
 								</div>
 								<div class="bg-white mt-4 p-4 text-center">
 									<div class="heading-4 strong-700">Payment</div>
 									<p>Configure your payment method</p>
-									<a href="http://littardoemporium.com/shop/profile"
+									<a href="#"
 									   class="btn btn-styled btn-base-1 btn-outline btn-sm">Configure Now</a>
 								</div>
 							</div>

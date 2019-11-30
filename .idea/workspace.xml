@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4def717-c8a4-44bd-a956-ba462b608033" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/merchant/venues.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Merchant/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Merchant/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/merchant/inc/sidemenu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/merchant/inc/sidemenu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,20 +24,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Merchant/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
+            <state relative-caret-position="314">
               <caret line="31" column="73" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="7" column="38" lean-forward="true" selection-end-line="152" selection-end-column="11" />
+            <state relative-caret-position="173">
+              <caret line="105" column="67" selection-start-line="105" selection-start-column="61" selection-end-line="105" selection-end-column="67" />
               <folding>
                 <element signature="e#6816#6839#0#HTML" expanded="true" />
                 <element signature="e#8556#8561#0#HTML" expanded="true" />
@@ -87,6 +83,7 @@
       <find>nav</find>
       <find>$</find>
       <find>col-lg-3 d-none d-lg-block</find>
+      <find>littar</find>
     </findStrings>
     <replaceStrings>
       <replace>0</replace>
@@ -140,13 +137,13 @@
         <option value="$PROJECT_DIR$/config/auth.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Merchant/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/resources/views/merchant/auth/login.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Merchant/API/MerchantController.php" />
         <option value="$PROJECT_DIR$/resources/views/merchant/inc/sidemenu.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/merchant/venues.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Merchant/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php" />
       </list>
     </option>
   </component>
@@ -429,18 +426,18 @@
       <workItem from="1574834369175" duration="4347000" />
       <workItem from="1574920662828" duration="11287000" />
       <workItem from="1575019843266" duration="4918000" />
-      <workItem from="1575029255078" duration="12785000" />
+      <workItem from="1575029255078" duration="13082000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33337000" />
+    <option name="totallyTimeSpent" value="33634000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1416309" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1416309" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -455,7 +452,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.25552824" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.25429976" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -802,17 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="38" lean-forward="true" selection-end-line="152" selection-end-column="11" />
-          <folding>
-            <element signature="e#6816#6839#0#HTML" expanded="true" />
-            <element signature="e#8556#8561#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/merchant/inc/sidemenu.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="651">
@@ -836,8 +822,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Merchant/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
+        <state relative-caret-position="314">
           <caret line="31" column="73" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/merchant/dashboard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="105" column="67" selection-start-line="105" selection-start-column="61" selection-end-line="105" selection-end-column="67" />
+          <folding>
+            <element signature="e#6816#6839#0#HTML" expanded="true" />
+            <element signature="e#8556#8561#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
