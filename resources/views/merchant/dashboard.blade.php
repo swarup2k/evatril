@@ -1,6 +1,26 @@
 @extends('merchant.layouts.app')
 
 @section('content')
+	<link rel="stylesheet" href="{{ asset('fullcalendar-4.3.1/packages/core/main.css') }}">
+	<link rel="stylesheet" href="{{ asset('fullcalendar-4.3.1/packages/daygrid/main.css') }}">
+	<script src="{{ asset('fullcalendar-4.3.1/packages/core/main.js') }}"></script>
+	<script src="{{ asset('fullcalendar-4.3.1/packages/daygrid/main.js') }}"></script>
+
+	<script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: [ 'dayGrid' ]
+            });
+
+            calendar.render();
+        });
+
+	</script>
+
+
 	<section class="gry-bg py-4 profile">
 		<div class="container">
 			<div class="row cols-xs-space cols-sm-space cols-md-space">
@@ -66,7 +86,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-7">
+							<div class="col-md-5">
 								<div class="form-box bg-white mt-4">
 									<div class="form-box-title px-3 py-2 text-center">
 										Bookings
@@ -95,22 +115,15 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-5">
-								<div class="bg-white mt-4 p-5 text-center">
-									<div class="mb-3">
-										@if (auth('merchant')->user()->approved == 1)
-											<img src="http://littardoemporium.com/shop/public/frontend/images/icons/verified.png"
-												 alt="" width="130">
-
-										@else
-											<img src="http://littardoemporium.com/shop/public/frontend/images/icons/non_verified.png"
-												 alt="" width="130">
-
-
-										@endif
-									</div>
+							<div class="col-md-7 mt-4" >
+								<div class="form-box-title px-3 py-2 text-center">
+									Realtime Bookings
+								</div>
+								<div class="bg-white mt-1 p-2" id="calendar">
 
 								</div>
+
+
 							</div>
 						</div>
 						<div class="row">

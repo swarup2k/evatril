@@ -119,54 +119,47 @@
 
 	@auth("admin")
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-3">
 				<div class="panel">
-					<!--Panel heading-->
-					<div class="panel-heading">
-						<h3 class="panel-title">Category wise product sale</h3>
-					</div>
-
-					<!--Panel body-->
-					<div class="panel-body">
-						<div class="table-responsive">
-							<table class="table table-striped mar-no">
-								<thead>
-								<tr>
-									<th>Category Name</th>
-									<th>Sale</th>
-								</tr>
-								</thead>
-
-							</table>
-						</div>
+					<div class="pad-top text-center dash-widget">
+						<p class="text-normal text-main">Total Choreography Bookings</p>
+						<p class="text-semibold text-3x text-main">0</p>
+						<a href="#" class="btn btn-primary mar-top btn-block top-border-radius-no">Manage Choreography
+						</a>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-3">
 				<div class="panel">
-					<!--Panel heading-->
-					<div class="panel-heading">
-						<h3 class="panel-title">Category wise product stock</h3>
-					</div>
-
-					<!--Panel body-->
-					<div class="panel-body">
-						<div class="table-responsive">
-							<table class="table table-striped mar-no">
-								<thead>
-								<tr>
-									<th>Category Name</th>
-									<th>Stock</th>
-								</tr>
-								</thead>
-								<tbody>
-
-								</tbody>
-							</table>
-						</div>
+					<div class="pad-top text-center dash-widget">
+						<p class="text-normal text-main">Total Decoration Bookings</p>
+						<p class="text-semibold text-3x text-main">0</p>
+						<a href="#" class="btn btn-primary mar-top btn-block top-border-radius-no">Manage Decoration
+						</a>
 					</div>
 				</div>
 			</div>
+			<div class="col-md-3">
+				<div class="panel">
+					<div class="pad-top text-center dash-widget">
+						<p class="text-normal text-main">Total Beautician Bookings</p>
+						<p class="text-semibold text-3x text-main">0</p>
+						<a href="#" class="btn btn-primary mar-top btn-block top-border-radius-no">Manage Beautician
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="panel">
+					<div class="pad-top text-center dash-widget">
+						<p class="text-normal text-main">Total Pandir/Priest Bookings</p>
+						<p class="text-semibold text-3x text-main">0</p>
+						<a href="#" class="btn btn-primary mar-top btn-block top-border-radius-no">Manage Pandir/Priest
+						</a>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	@endauth
 
