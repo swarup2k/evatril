@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Merchant\API;
 use App\Hall;
 use App\Http\Controllers\Controller;
 use App\Merchant;
+use App\Sms;
 use App\Venue;
 use Illuminate\Http\Request;
 
@@ -75,5 +76,7 @@ class MerchantController extends Controller
 
 
     }
+
+
 
 }

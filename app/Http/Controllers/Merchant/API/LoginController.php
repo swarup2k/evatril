@@ -16,28 +16,28 @@ class LoginController extends Controller
     public function preLogin(Request $request)
     {
         $merchant = Merchant::where('mobile', $request->mobile)->first();
-        if($merchant){
-           if($merchant->verified == 1){
-               if($merchant->name == '' || $merchant->email == '' || $merchant->password == ''){
-                   return response()->json(['message' => 'Redirecting to registration page','merchant_id' => $merchant->id ,'error' => 0]);
-               }
-           }else{
-               $otp = rand(100000,999999);
-               $sms = new Sms();
-               $sms->send($request->mobile,'Your verification otp is '.$otp);
-               $merchant->otp = $otp;
-               $merchant->save();
-               return response()->json([
-                   'message' => 'OTP sent',
-                   'merchant_id' => $merchant->id ,
-                   'error' => 0
-               ]);
-           }
-            return response()->json(['message' => 'Mobile exists','merchant' => $merchant,'error' => 1]);
-        }else{
-            $otp = rand(100000,999999);
+        if ($merchant) {
+            if ($merchant->verified == 1) {
+                if ($merchant->name == '' || $merchant->email == '' || $merchant->password == '') {
+                    return response()->json(['message' => 'Redirecting to registration page', 'merchant_id' => $merchant->id, 'error' => 0]);
+                }
+            } else {
+                $otp = rand(100000, 999999);
+                $sms = new Sms();
+                $sms->send($request->mobile, 'Your verification otp is ' . $otp);
+                $merchant->otp = $otp;
+                $merchant->save();
+                return response()->json([
+                    'message' => 'OTP sent',
+                    'merchant_id' => $merchant->id,
+                    'error' => 0
+                ]);
+            }
+            return response()->json(['message' => 'Mobile exists', 'merchant' => $merchant, 'error' => 1]);
+        } else {
+            $otp = rand(100000, 999999);
             $sms = new Sms();
-            $sms->send($request->mobile,'Your login otp is '.$otp);
+            $sms->send($request->mobile, 'Your login otp is ' . $otp);
 
             $merchant = new Merchant();
             $merchant->mobile = $request->mobile;
@@ -46,7 +46,7 @@ class LoginController extends Controller
 
             return response()->json([
                 'message' => 'OTP sent',
-                'merchant_id' => $merchant->id ,
+                'merchant_id' => $merchant->id,
                 'error' => 0
             ]);
         }
@@ -88,17 +88,22 @@ class LoginController extends Controller
     {
         $hall = null;
         $merchant = Merchant::find($request->merchant_id);
-        $venue = Venue::where('merchant_id', $merchant->id)->first();
-        if($venue){
-            $hall = Hall::where('venue_id', $venue->id)->first();
+        if ($merchant != '' || $merchant != NULL) {
+            $venue = Venue::where('merchant_id', $merchant->id)->first();
+            if ($venue) {
+                $hall = Hall::where('venue_id', $venue->id)->first();
+            }
+            if ($merchant->otp == $request->otp) {
+                $merchant->verified = 1;
+                $merchant->save();
+                return response()->json(['message' => 'OTP verified', 'venue' => $merchant, 'hall' => $hall, 'venue' => $venue, 'error' => 0]);
+            } else {
+                return response()->json(['message' => 'Incorrect OTP', 'error' => 1]);
+            }
+        } else {
+            return response()->json(['message' => 'Invalid Merchant', 'error' => 1]);
         }
-        if($merchant->otp == $request->otp){
-            $merchant->verified = 1;
-            $merchant->save();
-            return response()->json(['message' => 'OTP verified', 'venue' => $merchant, 'hall' => $hall ,'venue' => $venue,'error' => 0]);
-        }else{
-            return response()->json(['message' => 'Incorrect OTP','error' => 1]);
-        }
+
     }
 
     public function register(Request $request)
@@ -108,6 +113,34 @@ class LoginController extends Controller
         $merchant->email = $request->email;
         $merchant->password = bcrypt($request->password);
         $merchant->save();
-        return response()->json(['message' => 'Registration successful','error' => 0]);
+        return response()->json(['message' => 'Registration successful', 'error' => 0]);
+    }
+
+    public function forgotSendOtp(Request $request)
+    {
+        $mobile = $request->mobile;
+        $otp = rand(100000, 999999);
+        $merchant = Merchant::where('mobile', $mobile)->first();
+        if ($merchant != '' || $merchant != NULL) {
+            $merchant->otp = $otp;
+            $merchant->save();
+            (new Sms())->send($mobile, 'You account reset OTP is : ' . $otp);
+            return response()->json(['message' => 'Account reset OTP has been sent', 'merchant_id' => $merchant->id, 'error' => 0]);
+        } else {
+            return response()->json(['message' => 'Mobile number doesn\'t exist', 'error' => 1]);
+        }
+    }
+
+    public function changePassword(Request $request)
+    {
+        $merchant = Merchant::where('mobile', $request->mobile)->first();
+        if ($merchant != '' || $merchant != NULL) {
+            $merchant->password = bcrypt($request->password);
+            $merchant->save();
+            return response()->json(['message' => 'Password updated successfully', 'error' => 0]);
+        } else {
+            return response()->json(['message' => 'Mobile number doesn\'t exist', 'error' => 1]);
+        }
+
     }
 }
