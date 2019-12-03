@@ -10,4 +10,9 @@ class Venue extends Model
     {
         return $this->belongsTo(Merchant::class);
     }
+
+    public function getAmenitiesAttribute($value)
+    {
+        return json_decode($value);
+    }
 }
