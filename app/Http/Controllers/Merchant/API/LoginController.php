@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Merchant;
 use App\Sms;
 use App\Venue;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -53,7 +55,33 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'mobile' => 'required|string',
+            'password' => 'required|string',
+        ]);
 
+        $credentials = request(['mobile', 'password']);
+
+        if (!Auth::guard('merchant')->attempt($credentials))
+            return response()->json([
+                'message' => 'Unauthorized'
+            ], 401);
+
+        $user = auth()->guard('merchant')->user();
+        $tokenResult = $user->createToken('Personal Access Token');
+        $token = $tokenResult->token;
+        $token->expires_at = Carbon::now()->addWeeks(5);
+        $token->save();
+
+        return response()->json([
+            'doctor' => $user,
+            'access_token' => $tokenResult->accessToken,
+            'token_type' => 'Bearer',
+            'message' => 'Login successful',
+            'expires_at' => Carbon::parse(
+                $tokenResult->token->expires_at
+            )->toDateTimeString()
+        ]);
     }
 
     public function verifyOtp(Request $request)
