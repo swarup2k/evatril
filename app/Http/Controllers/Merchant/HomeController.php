@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('auth:merchant')->except('logout');
+        $this->middleware('auth:merchant')->except('logout');
     }
 
     public function index()
