@@ -49,6 +49,7 @@ class HomeController extends Controller
     public function viewVenue($id)
     {
         $venue = Venue::with('merchant')->find($id);
+
         return view('admin.venue.view',['venue' => $venue]);
     }
 }

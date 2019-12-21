@@ -87,9 +87,8 @@
 						<th>Amenities</th>
 						<td>
 							@php
-								$amenities = json_decode($venue->amenities);
 
-								foreach ($amenities as $a){
+								foreach ($venue->amenities as $a){
 								echo $a . "<br>";
 								}
 
