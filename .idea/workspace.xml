@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4def717-c8a4-44bd-a956-ba462b608033" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/evatrilx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/evatrilx.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-    </list>
+    <list default="true" id="c4def717-c8a4-44bd-a956-ba462b608033" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -236,7 +232,7 @@
       <workItem from="1575513762088" duration="59000" />
       <workItem from="1575513858025" duration="11000" />
       <workItem from="1576661406718" duration="609000" />
-      <workItem from="1577173047653" duration="595000" />
+      <workItem from="1577173047653" duration="849000" />
     </task>
     <servers />
   </component>
