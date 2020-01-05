@@ -132,7 +132,7 @@ class MerchantController extends Controller
     public function addPackage(Request $request)
     {
         $package = new CateringPackage();
-        $package->merchant_id = $request->merchant_id;
+        $package->merchant_id = auth('merchant-api')->id();
         $package->name = $request->name;
         $package->description = $request->description;
         $package->price = $request->price;
