@@ -146,6 +146,12 @@ class MerchantController extends Controller
         return response()->json(['code' => 200, 'message' => 'Success', 'data' => $packages]);
     }
 
+    public function deletePackage(Request $request)
+    {
+        CateringPackage::find($request->id)->delete();
+        return response()->json(['code' => 200, 'message' => 'Package has been deleted!']);
+    }
+
     public function updatePackage(Request $request)
     {
         $package = CateringPackage::find($request->id);

@@ -25,6 +25,7 @@ Route::prefix('merchant')->group(function () {
     Route::post('addPackage', 'Merchant\API\MerchantController@addPackage');
     Route::post('updatePackage', 'Merchant\API\MerchantController@updatePackage');
     Route::post('listPackage', 'Merchant\API\MerchantController@listPackage');
+    Route::post('deletePackage', 'Merchant\API\MerchantController@deletePackage');
 
 
 });
