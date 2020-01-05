@@ -27,5 +27,10 @@ Route::prefix('merchant')->group(function () {
     Route::post('listPackage', 'Merchant\API\MerchantController@listPackage');
     Route::post('deletePackage', 'Merchant\API\MerchantController@deletePackage');
 
+    //Slot Management route
+
+    Route::post('slot/add', 'Merchant\API\MerchantController@addSlot');
+    Route::get('slot/list', 'Merchant\API\MerchantController@listSlot');
+
 
 });

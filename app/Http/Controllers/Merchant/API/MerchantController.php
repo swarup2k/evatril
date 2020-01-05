@@ -8,6 +8,7 @@ use App\Hall;
 use App\Http\Controllers\Controller;
 use App\MasterVenue;
 use App\Merchant;
+use App\Slot;
 use App\Slug;
 use App\Sms;
 use App\Venue;
@@ -18,6 +19,11 @@ class MerchantController extends Controller
     public function __construct()
     {
         return $this->middleware("auth:merchant-api")->except(['addVenue','accountUpdate','addHall','addMasterVenue']);
+    }
+
+    public function merchant()
+    {
+        return auth('merchant-api')->id();
     }
 
     public function addVenue(Request $request)
@@ -162,6 +168,24 @@ class MerchantController extends Controller
         return response()->json(['message' => 'Package has been updated successfully', 'error' => 0]);
     }
 
+    public function addSlot(Request $request)
+    {
+        $slot = new Slot();
+        $slot->merchant_id = $this->merchant();
+        $slot->venue_id = $request->venue_id;
+        $slot->from_time = $request->from_time;
+        $slot->to_time = $request->to_time;
+        $slot->price = $request->price;
+        $slot->save();
+
+        return response()->json(['message' => 'Slot has been added', 'error' => 0]);
+    }
+
+    public function listSlot(Request $request)
+    {
+        $slots = Slot::where(['merchant_id' => $this->merchant()])->get();
+        return response()->json(['code' => 200, 'message' => 'Success', 'data' => $slots]);
+    }
 
 
 

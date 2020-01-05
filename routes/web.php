@@ -50,8 +50,14 @@ Route::prefix('merchant')->group(function (){
 
 
     Route::get('/', 'Merchant\HomeController@index')->name('merchant.home');
+    Route::get('/bookings', 'Merchant\HomeController@bookings')->name('merchant.bookings');
+    Route::get('/reviews', 'Merchant\HomeController@reviews')->name('merchant.reviews');
+    Route::get('/payments', 'Merchant\HomeController@payments')->name('merchant.payments');
+    Route::get('/support', 'Merchant\HomeController@support')->name('merchant.support');
     Route::get('/venues', 'Merchant\HomeController@myVenues')->name('merchant.venues');
+    Route::get('/venues/master', 'Merchant\HomeController@myMasterVenues')->name('merchant.master.venues');
     Route::get('/venue/{id}/delete', 'Merchant\HomeController@deleteVenue')->name('merchant.venue.delete');
+    Route::get('/venue/master/{id}/delete', 'Merchant\HomeController@deleteMasterVenue')->name('merchant.venue.master.delete');
     Route::get('/login', 'Merchant\Auth\LoginController@showLoginForm')->name('merchant.login');
     Route::post('/login', 'Merchant\Auth\LoginController@login')->name('merchant.login.validate');
     Route::get('/logout','Merchant\Auth\LoginController@logout')->name('merchant.logout');

@@ -50,9 +50,9 @@
 						<div class="row">
 							<div class="col-md-3 col-6">
 								<div class="dashboard-widget text-center green-widget mt-4 c-pointer">
-									<a href="javascript:;" class="d-block">
+									<a href="{{ route('merchant.master.venues') }}" class="d-block">
 										<i class="fa fa-upload"></i>
-										<span class="d-block title heading-3 strong-400">0</span>
+										<span class="d-block title heading-3 strong-400">{{ $data['venues'] }}</span>
 										<span class="d-block sub-title">Venues</span>
 									</a>
 								</div>
@@ -146,10 +146,46 @@
 								<div class="bg-white mt-4 p-4 text-center">
 									<div class="heading-4 strong-700">Venue</div>
 									<p>Manage &amp; organize your venue</p>
-									<a href="#"
-									   class="btn btn-styled btn-base-1 btn-outline btn-sm">Go to setting</a>
+
+                                    <button type="button" class="btn btn-styled btn-base-1 btn-outline btn-sm" data-toggle="modal" data-target="#myModal">Add Venue</button>
 								</div>
-								<div class="bg-white mt-4 p-4 text-center">
+
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Add Master Venue</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                            </div>
+                                            <form action="" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="issue_type">Issue Type:</label>
+                                                        <select name="issue_type" id="issue_type" class="form-control">
+                                                            <option value="Payment">Payment</option>
+                                                            <option value="Booking">Booking</option>
+                                                            <option value="Refund">Refund</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="bg-white mt-4 p-4 text-center">
 									<div class="heading-4 strong-700">Payment</div>
 									<p>Configure your payment method</p>
 									<a href="#"

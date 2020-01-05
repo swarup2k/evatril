@@ -35,7 +35,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="">
+						<a href="{{ route('merchant.bookings') }}" class="{{ (\Route::currentRouteName() == 'merchant.bookings') ? 'active' : '' }}">
 							<i class="la la-file-text"></i>
 							<span class="category-name">
                                             Booking History
@@ -50,8 +50,16 @@
                                         </span>
 						</a>
 					</li>
+                    <li>
+                        <a href="{{ route('merchant.master.venues') }}" class="{{ (\Route::currentRouteName() == 'merchant.master.venues') ? 'active' : '' }}">
+                            <i class="la la-heart-o"></i>
+                            <span class="category-name">
+                                            Master Venues
+                                        </span>
+                        </a>
+                    </li>
 					<li>
-						<a href="#" class="">
+						<a href="{{ route('merchant.reviews') }}" class="">
 							<i class="la la-diamond"></i>
 							<span class="category-name">
                                             Venue Reviews
@@ -68,7 +76,7 @@
 					</li>
 
 					<li>
-						<a href="#" class="">
+						<a href="{{ route('merchant.payments') }}" class="">
 							<i class="la la-cc-mastercard"></i>
 							<span class="category-name">
                                             Payment History
@@ -77,7 +85,7 @@
 					</li>
 
 					<li>
-						<a href="#" class="">
+						<a href="{{ route('merchant.support') }}" class="">
 							<i class="la la-support"></i>
 							<span class="category-name">
                                             Support Ticket
