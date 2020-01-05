@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Merchant\API;
 
+use App\CateringPackage;
 use App\Hall;
 use App\Http\Controllers\Controller;
 use App\MasterVenue;
@@ -126,6 +127,23 @@ class MerchantController extends Controller
     {
         $venues = MasterVenue::where(['merchant_id' => $request->merchant_id])->get();
         return response()->json(['code' => 200, 'message' => 'Success', 'data' => $venues]);
+    }
+
+    public function addPackage(Request $request)
+    {
+        $package = new CateringPackage();
+        $package->merchant_id = $request->merchant_id;
+        $package->name = $request->name;
+        $package->description = $request->description;
+        $package->price = $request->price;
+        $package->save();
+        return response()->json(['message' => 'Package has been added successfully', 'error' => 0]);
+    }
+
+    public function listPackage(Request $request)
+    {
+        $packages = CateringPackage::where(['merchant_id' => $request->merchant_id])->get();
+        return response()->json(['code' => 200, 'message' => 'Success', 'data' => $packages]);
     }
 
 

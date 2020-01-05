@@ -20,5 +20,10 @@ Route::prefix('merchant')->group(function () {
     Route::post('hall/add', 'Merchant\API\MerchantController@addHall');
     Route::post('myMasterVenueList', 'Merchant\API\MerchantController@myMasterVenueList');
 
+    //Catering Package Related Route
+
+    Route::post('addPackage', 'Merchant\API\MerchantController@addPackage');
+    Route::post('listPackage', 'Merchant\API\MerchantController@listPackage');
+
 
 });

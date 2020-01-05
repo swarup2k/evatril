@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Merchant\API;
 
+use App\CateringPackage;
 use App\Hall;
 use App\Http\Controllers\Controller;
 use App\Merchant;
@@ -143,4 +144,5 @@ class LoginController extends Controller
         }
 
     }
+
 }
