@@ -1,10 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers\Merchant\API;
 
 use App\Hall;
 use App\Http\Controllers\Controller;
+use App\MasterVenue;
 use App\Merchant;
+use App\Slug;
 use App\Sms;
 use App\Venue;
 use Illuminate\Http\Request;
@@ -13,7 +16,7 @@ class MerchantController extends Controller
 {
     public function __construct()
     {
-        return $this->middleware("auth:venue-api")->except(['addVenue','accountUpdate','addHall']);
+        return $this->middleware("auth:merchant-api")->except(['addVenue','accountUpdate','addHall','addMasterVenue']);
     }
 
     public function addVenue(Request $request)
@@ -46,6 +49,7 @@ class MerchantController extends Controller
 
     }
 
+
     public function addHall(Request $request)
     {
         $hall = new Hall();
@@ -64,18 +68,60 @@ class MerchantController extends Controller
     public function accountUpdate(Request $request)
     {
         $merchant = Merchant::findOrFail($request->merchant_id);
-
         $merchant->account_holder_name =  $request->account_holder_name;
         $merchant->account_no =  $request->account_no;
         $merchant->ifsc =  $request->ifsc;
         $merchant->branch_name =  $request->branch_name;
         $merchant->gst =  $request->gst;
         $merchant->save();
-
         return response()->json(['message' => 'Account has been updated', 'error' => 0]);
-
-
     }
+
+    public function addMasterVenue(Request $request)
+    {
+        $enc_photo = $request->banner;
+        $base64_str = substr($enc_photo, strpos($enc_photo, ",") + 1);
+        $image = base64_decode($base64_str);
+        $safeName = \Str::random(10) . md5(time()) . '.' . 'jpeg';
+        \Storage::disk('public')->put('venue/banner/' . $safeName, $image);
+        $banner = "venue/banner/" . $safeName;
+
+
+        $venue = new MasterVenue();
+        $venue->merchant_id = $request->merchant_id;
+        $venue->name = $request->name;
+        $venue->slug = (new Slug())->createSlug($request->name);
+        $venue->banner = $banner;
+        $venue->type = $request->type;
+        $venue->charge_per_night = $request->charge_per_night;
+        $venue->guest_capacity = $request->guest_capacity;
+        $venue->phone = $request->phone;
+        $venue->address = $request->address;
+        $venue->city = $request->city;
+        $venue->state = $request->state;
+        $venue->pincode = $request->pincode;
+        $venue->lat = $request->lat;
+        $venue->lon = $request->lon;
+        $venue->inclusions = $request->inclusions;
+        $venue->spaces = $request->spaces;
+        $venue->location_description = $request->location_description;
+        $venue->accommodation = $request->accommodation;
+        $venue->event_space = $request->event_space;
+        $venue->events_type = $request->events_type;
+        $venue->catering_policy = $request->catering_policy;
+        $venue->alcohol_policy = $request->alcohol_policy;
+        $venue->indian_cuisines = $request->indian_cuisines;
+        $venue->western_cuisines = $request->western_cuisines;
+        $venue->oriental_cuisines = $request->oriental_cuisines;
+        $venue->modes_of_payment = $request->modes_of_payment;
+        $venue->cancellation_policy = $request->cancellation_policy;
+        $venue->limit_for_celebration = $request->limit_for_celebration;
+        $venue->restrictions = $request->restrictions;
+        $venue->active = 1;
+        $venue->save();
+    }
+
+
 
 
 

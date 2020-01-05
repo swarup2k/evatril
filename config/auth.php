@@ -52,7 +52,7 @@ return [
             'provider' => 'admins',
         ],
 
-        'venue-api' => [
+        'merchant-api' => [
             'driver' => 'passport',
             'provider' => 'merchants',
         ],
