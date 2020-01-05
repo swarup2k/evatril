@@ -146,6 +146,16 @@ class MerchantController extends Controller
         return response()->json(['code' => 200, 'message' => 'Success', 'data' => $packages]);
     }
 
+    public function updatePackage(Request $request)
+    {
+        $package = CateringPackage::find($request->id);
+        $package->name = $request->name;
+        $package->description = $request->description;
+        $package->price = $request->price;
+        $package->save();
+        return response()->json(['message' => 'Package has been updated successfully', 'error' => 0]);
+    }
+
 
 
 

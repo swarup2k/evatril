@@ -23,6 +23,7 @@ Route::prefix('merchant')->group(function () {
     //Catering Package Related Route
 
     Route::post('addPackage', 'Merchant\API\MerchantController@addPackage');
+    Route::post('updatePackage', 'Merchant\API\MerchantController@updatePackage');
     Route::post('listPackage', 'Merchant\API\MerchantController@listPackage');
 
 
