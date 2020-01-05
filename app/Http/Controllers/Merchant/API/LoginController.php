@@ -74,7 +74,7 @@ class LoginController extends Controller
         $token->save();
 
         return response()->json([
-            'doctor' => $user,
+            'merchant' => $user,
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
             'message' => 'Login successful',
