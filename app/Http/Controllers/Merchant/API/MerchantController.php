@@ -119,6 +119,7 @@ class MerchantController extends Controller
         $venue->restrictions = $request->restrictions;
         $venue->active = 1;
         $venue->save();
+        return response()->json(['code' => 200, 'message' => 'Venue has been added successfully!']);
     }
 
 
