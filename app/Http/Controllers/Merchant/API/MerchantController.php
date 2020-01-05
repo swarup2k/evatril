@@ -122,6 +122,12 @@ class MerchantController extends Controller
         return response()->json(['code' => 200, 'message' => 'Venue has been added successfully!']);
     }
 
+    public function myMasterVenueList(Request $request)
+    {
+        $venues = MasterVenue::where(['merchant_id' => $request->merchant_id])->get();
+        return response()->json(['code' => 200, 'message' => 'Success', 'data' => $venues]);
+    }
+
 
 
 
