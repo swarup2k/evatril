@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Merchant;
 
+use App\Booking;
 use App\Hall;
 use App\Http\Controllers\Controller;
 use App\MasterVenue;
@@ -14,6 +15,11 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth:merchant')->except('logout');
+    }
+
+    public function merchant()
+    {
+        return auth('merchant')->user();
     }
 
     public function index()
@@ -52,7 +58,8 @@ class HomeController extends Controller
 
     public function bookings()
     {
-        return view('merchant.bookings');
+        $bookings = Booking::with(['venue','slot'])->where('merchant_id', $this->merchant()->id)->get();
+        return view('merchant.bookings',['bookings' => $bookings]);
     }
 
     public function reviews()
