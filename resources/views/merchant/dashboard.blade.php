@@ -14,11 +14,9 @@
             var calendarEl = document.getElementById('calendar');
 
 
-
-
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: [ 'dayGrid', 'timeGrid' ],
-                eventClick: function(eventObj) {
+                plugins: ['dayGrid', 'timeGrid'],
+                eventClick: function (eventObj) {
                     if (eventObj.url) {
                         console.log(
                             'Clicked ' + eventObj.title + '.\n' +
@@ -85,6 +83,14 @@
                         </div>
                     </div>
                     <!-- dashboard content -->
+
+                    @if(\Session::has('success'))
+                        <div class="alert alert-success">
+                            {{session('success')}}
+                        </div>
+                        <br>
+                    @endif
+
                     <div class="">
                         <div class="row">
                             <div class="col-md-3 col-6">
@@ -175,8 +181,9 @@
                                         <ul class="clearfix">
                                         </ul>
                                         <div class="text-center">
-                                            <a href="#"
-                                               class="btn pt-3 pb-1">Add New Hall/Lawn</a>
+                                            <button id="add_hall" data-toggle="modal" data-target="#myModal2"
+                                                    class="btn btn-styled btn-base-1 btn-outline btn-sm">Add New Hall/Lawn
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -186,13 +193,14 @@
                                     <div class="heading-4 strong-700">Venue</div>
                                     <p>Manage &amp; organize your venue</p>
 
-                                    <button type="button" class="btn btn-styled btn-base-1 btn-outline btn-sm"
+                                    <button id="add_venue" type="button"
+                                            class="btn btn-styled btn-base-1 btn-outline btn-sm"
                                             data-toggle="modal" data-target="#myModal">Add Venue
                                     </button>
                                 </div>
 
                                 <div class="modal fade" id="myModal" role="dialog">
-                                    <div class="modal-dialog">
+                                    <div class="modal-dialog modal-lg">
 
                                         <!-- Modal content-->
                                         <div class="modal-content">
@@ -206,13 +214,230 @@
                                                 @csrf
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                        <label for="issue_type">Issue Type:</label>
-                                                        <select name="issue_type" id="issue_type" class="form-control">
-                                                            <option value="Payment">Payment</option>
-                                                            <option value="Booking">Booking</option>
-                                                            <option value="Refund">Refund</option>
-                                                            <option value="Other">Other</option>
+                                                        <label for="name">Venue Name</label>
+                                                        <input type="text" name="name" class="form-control" required
+                                                               id="name">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="banner">Venue Banner</label>
+                                                        <input type="file" name="banner" class="form-control" required
+                                                               id="banner">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="type">Venue Type</label>
+                                                        <select name="type" class="form-control" required id="type">
+                                                            <option value="VENUE">Venue</option>
+                                                            <option value="CATERING_VENUE">Catering Venue</option>
                                                         </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="charge_per_night">Average Charges</label>
+                                                        <input type="text" name="charge_per_night" class="form-control"
+                                                               required
+                                                               id="charge_per_night">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="guest_capacity">Guest Capacity</label>
+                                                        <input type="text" name="guest_capacity" class="form-control"
+                                                               required
+                                                               id="guest_capacity">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="phone">Phone Number</label>
+                                                        <input type="text" name="phone" class="form-control" required
+                                                               id="phone">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="address">Address</label>
+                                                        <input type="text" name="address" class="form-control" required
+                                                               id="address">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="city">City</label>
+                                                        <input type="text" name="city" class="form-control" required
+                                                               id="city">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="state">State</label>
+                                                        <input type="text" name="state" class="form-control" required
+                                                               id="state">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="pincode">Pincode</label>
+                                                        <input type="text" name="pincode" class="form-control" required
+                                                               id="pincode">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inclusions">Inclusions</label>
+                                                        <input type="text" name="inclusions" class="form-control"
+                                                               required
+                                                               id="inclusions">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="spaces">Spaces</label>
+                                                        <input type="text" name="spaces" class="form-control" required
+                                                               id="spaces">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="location_description">Location Description</label>
+                                                        <input type="text" name="location_description"
+                                                               class="form-control" required
+                                                               id="location_description">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="accommodation">Accommodation</label>
+                                                        <input type="text" name="accommodation" class="form-control"
+                                                               required
+                                                               id="accommodation">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="event_space">Event Space</label>
+                                                        <input type="text" name="event_space" class="form-control"
+                                                               required
+                                                               id="event_space">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="events_type">Event Type</label>
+                                                        <input type="text" name="events_type" class="form-control"
+                                                               required
+                                                               id="events_type">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="catering_policy">Catering Policy</label>
+                                                        <input type="text" name="catering_policy" class="form-control"
+                                                               required
+                                                               id="catering_policy">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="alcohol_policy">Alcohol Policy</label>
+                                                        <input type="text" name="alcohol_policy" class="form-control"
+                                                               required
+                                                               id="alcohol_policy">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="indian_cuisines">Indian Cuisines</label>
+                                                        <input type="text" name="indian_cuisines" class="form-control"
+                                                               required
+                                                               id="indian_cuisines">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="western_cuisines">Western Cuisines</label>
+                                                        <input type="text" name="western_cuisines" class="form-control"
+                                                               required
+                                                               id="western_cuisines">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="oriental_cuisines">Oriental Cuisines</label>
+                                                        <input type="text" name="oriental_cuisines" class="form-control"
+                                                               required
+                                                               id="oriental_cuisines">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="modes_of_payment">Payment Mode</label>
+                                                        <input type="text" name="modes_of_payment" class="form-control"
+                                                               required
+                                                               id="modes_of_payment">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="cancellation_policy">Cancellation Policy</label>
+                                                        <input type="text" name="cancellation_policy"
+                                                               class="form-control" required
+                                                               id="cancellation_policy">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="limit_for_celebration">Limit for Celebration</label>
+                                                        <input type="text" name="limit_for_celebration"
+                                                               class="form-control" required
+                                                               id="limit_for_celebration">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="restrictions">Restrictions</label>
+                                                        <input type="text" name="restrictions"
+                                                               class="form-control" required
+                                                               id="restrictions">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="lat">Latitude</label>
+                                                        <input type="text" name="lat"
+                                                               class="form-control" required
+                                                               id="lat">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="lon">Longitude</label>
+                                                        <input type="text" name="lon"
+                                                               class="form-control" required
+                                                               id="lon">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="myModal2" role="dialog">
+                                    <div class="modal-dialog modal-lg">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Add Hall</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;
+                                                </button>
+
+                                            </div>
+                                            <form action="{{ route('merchant.store.hall') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="name">Hall/Lawn Name</label>
+                                                        <input type="text" name="name" class="form-control" required
+                                                               id="name">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="type">Select Venue</label>
+                                                        <select name="venue_id" class="form-control" required id="type">
+                                                            @foreach( \App\MasterVenue::where('merchant_id', auth('merchant')->id())->get() as $venue)
+                                                                <option value="{{ $venue->id }}">{{ $venue->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="type">Select Type</label>
+                                                        <select name="type" class="form-control" required id="type">
+                                                            <option value="LAWN">Lawn</option>
+                                                            <option value="HALL">Hall</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="area_size">Area Size</label>
+                                                        <input type="text" name="area_size" class="form-control"
+                                                               required
+                                                               id="area_size">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="capacity_row">Capacity Row</label>
+                                                        <input type="text" name="capacity_row" class="form-control"
+                                                               required
+                                                               id="capacity_row">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="capacity_floating">Capacity Floating</label>
+                                                        <input type="text" name="capacity_floating" class="form-control" required
+                                                               id="capacity_floating">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="booking_amount">Average Booking Amount</label>
+                                                        <input type="text" name="booking_amount" class="form-control" required
+                                                               id="booking_amount">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -241,5 +466,10 @@
             </div>
         </div>
     </section>
-
+    <script !src="">
+        $(document).ready(function () {
+            // $('#add_venue').click();
+        });
+    </script>
 @endsection
+

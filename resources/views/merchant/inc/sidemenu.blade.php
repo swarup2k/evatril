@@ -67,10 +67,10 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="">
+						<a href="{{ route('merchant.list.hall') }}" class="">
 							<i class="la la-file-text"></i>
 							<span class="category-name">
-                                            Venue Setting
+                                            Hall/Lawn
                                         </span>
 						</a>
 					</li>

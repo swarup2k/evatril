@@ -63,6 +63,7 @@ class MerchantController extends Controller
         $hall->name = $request->name;
         $hall->venue_id = $request->venue_id;
         $hall->type = $request->type;
+        $hall->merchant_id = $this->merchant();
         $hall->area_size = $request->area_size;
         $hall->capacity_floating = $request->capacity_floating;
         $hall->capacity_row = $request->capacity_row;
@@ -186,6 +187,8 @@ class MerchantController extends Controller
         $slots = Slot::where(['merchant_id' => $this->merchant()])->get();
         return response()->json(['code' => 200, 'message' => 'Success', 'data' => $slots]);
     }
+
+
 
 
 

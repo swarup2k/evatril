@@ -56,6 +56,9 @@ Route::prefix('merchant')->group(function (){
     Route::get('/support', 'Merchant\HomeController@support')->name('merchant.support');
     Route::get('/venues', 'Merchant\HomeController@myVenues')->name('merchant.venues');
     Route::get('/venues/master', 'Merchant\HomeController@myMasterVenues')->name('merchant.master.venues');
+    Route::post('/', 'Merchant\HomeController@addMasterVenue')->name('merchant.add.master.venue');
+    Route::post('/hall/add', 'Merchant\HomeController@addHall')->name('merchant.store.hall');
+    Route::get('/hall/list', 'Merchant\HomeController@listHall')->name('merchant.list.hall');
     Route::get('/venue/{id}/delete', 'Merchant\HomeController@deleteVenue')->name('merchant.venue.delete');
     Route::get('/venue/master/{id}/delete', 'Merchant\HomeController@deleteMasterVenue')->name('merchant.venue.master.delete');
     Route::get('/login', 'Merchant\Auth\LoginController@showLoginForm')->name('merchant.login');
