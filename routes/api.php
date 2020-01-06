@@ -31,6 +31,11 @@ Route::prefix('merchant')->group(function () {
 
     Route::post('slot/add', 'Merchant\API\MerchantController@addSlot');
     Route::get('slot/list', 'Merchant\API\MerchantController@listSlot');
+    Route::post('slot/check', 'Merchant\API\MerchantController@checkSlot');
+
+    //Booking related route
+
+    Route::post('booking/add', 'Merchant\API\MerchantController@saveBooking');
 
 
 });

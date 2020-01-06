@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Merchant\API;
 
+use App\Booking;
 use App\CateringPackage;
 use App\Hall;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,7 @@ use App\Slot;
 use App\Slug;
 use App\Sms;
 use App\Venue;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MerchantController extends Controller
@@ -188,7 +190,23 @@ class MerchantController extends Controller
         return response()->json(['code' => 200, 'message' => 'Success', 'data' => $slots]);
     }
 
+    public function checkSlot(Request $request)
+    {
+        $venue_id = $request->venue_id;
+        $date = $request->date;
+        $slots = Slot::where('venue_id', $venue_id)->get();
+        $data = [];
+        foreach ($slots as $slot){
+            $booking = Booking::where(['venue_id' => $venue_id, 'slot_id' => $slot->id])->whereDate('booking_date', Carbon::parse($date))->first();
+            if ($booking){
+                $slot['available'] = 0;
+            }else{
+                $slot['available'] = 1;
+            }
+        }
 
+        return response()->json(['code' => 200, 'message' => 'Success', 'data' => $slots]);
+    }
 
 
 

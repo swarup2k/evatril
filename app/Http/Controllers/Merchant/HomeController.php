@@ -125,7 +125,13 @@ class HomeController extends Controller
 
     public function listHall(Request $request)
     {
-        $halls = Hall::where('merchant_id', auth('merchant')->id())->get();
-        return $halls;
+        $halls = Hall::where('merchant_id', auth('merchant')->id())->paginate();
+        return view('merchant.halls',['halls' => $halls]);
+    }
+
+    public function deleteHall($id)
+    {
+        Hall::find($id)->delete();
+        return redirect()->back()->with('success','Hall/Lawn has been deleted');
     }
 }
