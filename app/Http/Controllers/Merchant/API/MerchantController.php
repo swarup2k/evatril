@@ -228,7 +228,7 @@ class MerchantController extends Controller
 
     public function bookingHistory()
     {
-        $bookings = Booking::with('venue')->where('merchant_id', $this->merchant())->get();
+        $bookings = Booking::with(['venue','slot'])->where('merchant_id', $this->merchant())->get();
         return response()->json(['code' => 200, 'message' => 'Success', 'data' => $bookings]);
     }
 

@@ -10,4 +10,9 @@ class Booking extends Model
     {
         return $this->belongsTo(MasterVenue::class);
     }
+
+    public function slot()
+    {
+        return $this->belongsTo(Slot::class);
+    }
 }
