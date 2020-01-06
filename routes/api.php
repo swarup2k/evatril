@@ -36,6 +36,7 @@ Route::prefix('merchant')->group(function () {
     //Booking related route
 
     Route::post('booking/add', 'Merchant\API\MerchantController@saveBooking');
+    Route::any('booking/history', 'Merchant\API\MerchantController@bookingHistory');
 
 
 });

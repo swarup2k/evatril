@@ -226,7 +226,11 @@ class MerchantController extends Controller
         return response()->json(['code' => 200, 'message' => 'Booking Successful']);
     }
 
-
+    public function bookingHistory()
+    {
+        $bookings = Booking::with('venue')->where('merchant_id', $this->merchant())->get();
+        return response()->json(['code' => 200, 'message' => 'Success', 'data' => $bookings]);
+    }
 
 
 }
