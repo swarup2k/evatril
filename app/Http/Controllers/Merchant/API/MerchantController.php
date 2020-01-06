@@ -195,7 +195,7 @@ class MerchantController extends Controller
         $venue_id = $request->venue_id;
         $date = $request->date;
         $slots = Slot::where('venue_id', $venue_id)->get();
-        $data = [];
+
         foreach ($slots as $slot){
             $booking = Booking::where(['venue_id' => $venue_id, 'slot_id' => $slot->id])->whereDate('booking_date', Carbon::parse($date))->first();
             if ($booking){
@@ -206,6 +206,24 @@ class MerchantController extends Controller
         }
 
         return response()->json(['code' => 200, 'message' => 'Success', 'data' => $slots]);
+    }
+
+    public function saveBooking(Request $request)
+    {
+        $booking = new Booking();
+        $booking->id = $request->id;
+        $booking->venue_id = $request->venue_id;
+        $booking->merchant_id = $this->merchant();
+        $booking->name = $request->name;
+        $booking->mobile = $request->mobile;
+        $booking->email = $request->email;
+        $booking->total_guest = $request->total_guest;
+        $booking->slot_id = $request->slot_id;
+        $booking->booking_date = $request->booking_date;
+        $booking->total_amount = $request->total_amount;
+        $booking->advance_amount = $request->advance_amount;
+        $booking->save();
+        return response()->json(['code' => 200, 'message' => 'Booking Successful']);
     }
 
 
