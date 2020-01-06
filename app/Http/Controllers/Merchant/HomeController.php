@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\MasterVenue;
 use App\Slug;
 use App\Venue;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,8 +26,60 @@ class HomeController extends Controller
 
     public function index()
     {
+
+
+
+        $bookings =  Booking::where('merchant_id' , auth('merchant')->id())->where('booking_date', '>=', \Carbon\Carbon::now()->subMonth())
+            ->groupBy('date')
+            ->orderBy('date', 'DESC')
+            ->get(array(
+                DB::raw('Date(booking_date) as date'),
+                DB::raw('COUNT(*) as "booking"')
+            ));
+
+
+
+        $start_date = date('Y-m-01', strtotime(Carbon::now()));
+
+        $end_date =  date('Y-m-t', strtotime(Carbon::now()));
+
+        $begin = new \DateTime( $start_date );
+        $end = new \DateTime( $end_date );
+        $end = $end->modify( '+1 day' );
+
+        $interval = new \DateInterval('P1D');
+        $date_range = new \DatePeriod($begin, $interval ,$end);
+        $final_data = [];
+        $testing = [];
+        foreach($date_range as $key1 => $date){
+            $date = $date->format("Y-m-d");
+            foreach ($bookings as $key => $booking){
+                $final_data[$key]['start'] = $date;
+                $final_data[$key]['overlap'] = false;
+                $final_data[$key]['rendering'] = 'background';
+
+                $booking_date = strtotime($booking->date);
+                $range_date = strtotime($date);
+                if($booking_date == $range_date){
+                    $final_data[$key]['color'] = "red";
+                    $final_data[$key]['booking_date'] = $booking->date;
+                    $final_data[$key]['range_date'] = $date;
+//                    echo "Date range: $date and booking date $booking->date & same 1<br>";
+                }else{
+                    $final_data[$key]['color'] = "green";
+                    $final_data[$key]['booking_date'] = $booking->date;
+                    $final_data[$key]['range_date'] = $date;
+//                    echo "Date range: $date and booking date $booking->date & same 0<br>";
+                }
+            }
+        }
+
+
+
+        $venues = MasterVenue::where('merchant_id', auth('merchant')->id())->paginate(20);
         $data['venues'] = MasterVenue::where('merchant_id', auth('merchant')->id())->count();
-        return view('merchant.dashboard', ['data' => $data]);
+        $data['bookings'] = Booking::where('merchant_id', auth('merchant')->id())->count();
+        return view('merchant.dashboard', ['data' => $data, 'venues' => $venues, 'events' => $final_data]);
     }
 
     public function myVenues()

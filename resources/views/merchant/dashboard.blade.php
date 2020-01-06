@@ -16,19 +16,10 @@
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: ['dayGrid', 'timeGrid'],
-                eventClick: function (eventObj) {
-                    if (eventObj.url) {
-                        console.log(
-                            'Clicked ' + eventObj.title + '.\n' +
-                            'Will open ' + eventObj.url + ' in a new tab'
-                        );
+                eventClick: function(info) {
+                    // info.jsEvent.preventDefault(); // don't let the browser navigate
 
-                        // window.open(eventObj.url);
 
-                        return false; // prevents browser from following link in current tab.
-                    } else {
-                        console.log(eventObj.event.title);
-                    }
                 },
                 header: {
                     left: 'prev,next today',
@@ -38,16 +29,28 @@
 
                 events: [
                     {
-                        title: 'ID: 3402938',
+                        title: 'Hello',
                         start: '2020-01-14',
-                        url: '#',
-                        color: '#fa5c7c',
+                        url: 'https://google.com',
+                        color: 'green',
+                        overlap: false,
+                        rendering: 'background',
                     },
                     {
-                        title: 'ID: 234235',
-                        url: '#',
+                        title: 'Hello',
                         start: '2020-01-18',
-                        color: '#ffbc00',
+                        overlap: false,
+                        color: 'red',
+                        url: 'https://google.com',
+                        rendering: 'background'
+                    },
+                    {
+                        title: 'Hello',
+                        start: '2020-01-20',
+                        overlap: false,
+                        color: 'orange',
+                        url: 'https://google.com',
+                        rendering: 'background'
                     }
                 ]
             });
@@ -106,7 +109,7 @@
                                 <div class="dashboard-widget text-center red-widget mt-4 c-pointer">
                                     <a href="javascript:;" class="d-block">
                                         <i class="fa fa-cart-plus"></i>
-                                        <span class="d-block title heading-3 strong-400">0</span>
+                                        <span class="d-block title heading-3 strong-400">{{ $data['bookings'] }}</span>
                                         <span class="d-block sub-title">Total Bookings</span>
                                     </a>
                                 </div>
@@ -141,7 +144,7 @@
                                             <tbody>
                                             <tr>
                                                 <td>Total bookings:</td>
-                                                <td><strong class="heading-6">0</strong></td>
+                                                <td><strong class="heading-6">{{ $data['bookings'] }}</strong></td>
                                             </tr>
                                             <tr>
                                                 <td>Upcoming bookings:</td>
@@ -178,8 +181,30 @@
                                         Venues
                                     </div>
                                     <div class="form-box-content p-3 category-widget">
-                                        <ul class="clearfix">
-                                        </ul>
+                                        <table class="table table-sm table-hover table-responsive-md">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>{{__('Venue Name')}}</th>
+                                                <th>{{__('Venue Type')}}</th>
+                                                <th>{{__('Guest Capacity')}}</th>
+                                                <th>{{__('Phone')}}</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach ($venues as $key => $v)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $v->name }}</td>
+                                                    <td>{{ $v->type }}</td>
+                                                    <td>{{ $v->guest_capacity }}</td>
+                                                    <td>{{ $v->phone }}</td>
+                                                </tr>
+
+                                            @endforeach
+                                            </tbody>
+                                        </table>
                                         <div class="text-center">
                                             <button id="add_hall" data-toggle="modal" data-target="#myModal2"
                                                     class="btn btn-styled btn-base-1 btn-outline btn-sm">Add New Hall/Lawn
