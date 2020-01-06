@@ -6,6 +6,7 @@ use App\Booking;
 use App\Hall;
 use App\Http\Controllers\Controller;
 use App\MasterVenue;
+use App\Slot;
 use App\Slug;
 use App\Venue;
 use Carbon\Carbon;
@@ -194,5 +195,40 @@ class HomeController extends Controller
     {
         Hall::find($id)->delete();
         return redirect()->back()->with('success','Hall/Lawn has been deleted');
+    }
+
+    public function checkSlot(Request $request)
+    {
+        $venue_id = $request->venue_id;
+        $date = $request->date;
+        $slots = Slot::where('venue_id', $venue_id)->get();
+
+        foreach ($slots as $slot){
+            $booking = Booking::where(['venue_id' => $venue_id, 'slot_id' => $slot->id])->whereDate('booking_date', Carbon::parse($date))->first();
+            if ($booking){
+                $slot['available'] = 0;
+            }else{
+                $slot['available'] = 1;
+            }
+        }
+
+        return response()->json(['code' => 200, 'message' => 'Success', 'data' => $slots]);
+    }
+
+    public function addBooking(Request $request)
+    {
+        $booking = new Booking();
+        $booking->venue_id = $request->venue_id;
+        $booking->booking_date = $request->booking_date;
+        $booking->merchant_id = auth('merchant')->id();
+        $booking->slot_id = $request->slot_id;
+        $booking->name = $request->name;
+        $booking->email = $request->email;
+        $booking->mobile = $request->phone;
+        $booking->total_guest = $request->total_guest;
+        $booking->total_amount = $request->total_amount;
+        $booking->advance_amount = $request->advance_amount;
+        $booking->save();
+        return redirect()->back()->with('success','Booking is successful');
     }
 }
