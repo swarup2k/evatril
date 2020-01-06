@@ -5,7 +5,7 @@
 				<div class="image"
 					 style="background-image:url('https://img.pngio.com/merchant-royalty-free-stock-png-images-for-your-design-merchant-png-512_512.png')"></div>
 				<div class="name mb-0">{{ auth('merchant')->user()->name }}
-                    {{ auth('merchant')->user() }}
+
 					@if (auth('merchant')->user()->approved == 1)
 						<img width="40px" src="http://littardoemporium.com/shop/public/frontend/images/icons/verified.png"
 							 alt="" width="130">
